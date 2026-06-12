@@ -119,51 +119,6 @@ The assignment requires:
 
 <img width="1024" height="1536" alt="ChatGPT Image Jun 12, 2026, 06_11_20 PM" src="https://github.com/user-attachments/assets/d684e067-5484-4f85-83c7-6424a273bf3f" />
 
-
-```text
-                        INTERNET
-                            │
-                            ▼
-                 +-------------------+
-                 |  NGINX INGRESS    |
-                 |  Load Balancer    |
-                 +---------+---------+
-                           │
-                           ▼
-                +--------------------+
-                |    api-service     |
-                |    ClusterIP       |
-                +---------+----------+
-                          │
-        ┌─────────────────┼─────────────────┐
-        ▼                 ▼                 ▼
- +-------------+   +-------------+   +-------------+
- | FastAPI Pod |   | FastAPI Pod |   | FastAPI Pod |
- +-------------+   +-------------+   +-------------+
-                          │
-                          ▼
-                +--------------------+
-                | postgres-service   |
-                |    ClusterIP       |
-                +---------+----------+
-                          │
-                          ▼
-                +--------------------+
-                |  PostgreSQL Pod    |
-                +---------+----------+
-                          │
-                          ▼
-                +--------------------+
-                | Persistent Volume  |
-                |        Claim       |
-                +---------+----------+
-                          │
-                          ▼
-                +--------------------+
-                | Persistent Disk    |
-                +--------------------+
-```
-
 ---
 
 # Requirement Mapping
