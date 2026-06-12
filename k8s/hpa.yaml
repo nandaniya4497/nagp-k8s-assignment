@@ -4,6 +4,7 @@ kind: HorizontalPodAutoscaler
 
 metadata:
   name: api-hpa
+  namespace: nagp-assignment
 
 spec:
 
@@ -25,3 +26,12 @@ spec:
       target:
         type: Utilization
         averageUtilization: 70
+
+  - type: Resource
+
+    resource:
+      name: memory
+
+      target:
+        type: Utilization
+        averageUtilization: 75

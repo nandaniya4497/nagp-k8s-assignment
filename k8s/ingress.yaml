@@ -3,6 +3,7 @@ kind: Ingress
 
 metadata:
   name: api-ingress
+  namespace: nagp-assignment
 
 spec:
   ingressClassName: nginx

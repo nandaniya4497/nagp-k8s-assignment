@@ -3,6 +3,7 @@ kind: Deployment
 
 metadata:
   name: api
+  namespace: nagp-assignment
 
 spec:
 
@@ -10,6 +11,9 @@ spec:
 
   strategy:
     type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
 
   selector:
     matchLabels:
@@ -58,8 +62,12 @@ spec:
           httpGet:
             path: /
             port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 10
 
         livenessProbe:
           httpGet:
             path: /
             port: 8000
+          initialDelaySeconds: 15
+          periodSeconds: 20

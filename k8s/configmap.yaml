@@ -3,6 +3,7 @@ kind: ConfigMap
 
 metadata:
   name: api-config
+  namespace: nagp-assignment
 
 data:
   DB_HOST: postgres-service
