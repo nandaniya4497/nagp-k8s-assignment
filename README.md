@@ -117,7 +117,7 @@ The assignment requires:
 
 # Solution Architecture
 
-<img width="1024" height="1536" alt="ChatGPT Image Jun 12, 2026, 06_11_20 PM" src="https://github.com/user-attachments/assets/d684e067-5484-4f85-83c7-6424a273bf3f" />
+![Architecture Diagram](docs/architecture-diagram.jpg)
 
 ---
 
