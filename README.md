@@ -1,8 +1,8 @@
-# NAGP 2026 Technology Band III Workshop
+# NAGP 2026 Technology
 
-# Kubernetes, DevOps & FinOps Home Assignment
+# Kubernetes, DevOps & FinOps Assignment
 
-## Candidate Information
+## Author Information
 
 **Name:** Sanjay Nandaniya
 
@@ -23,7 +23,7 @@
 ## GitHub Repository
 
 ```text
-https://github.com/<your-github-username>/nagp-k8s-assignment
+https://github.com/nandaniya4497/nagp-k8s-assignment.git
 ```
 
 ## Docker Hub Repository
@@ -118,6 +118,14 @@ The assignment requires:
 # Solution Architecture
 
 <img width="1024" height="1536" alt="ChatGPT Image Jun 12, 2026, 06_11_20 PM" src="https://github.com/user-attachments/assets/d684e067-5484-4f85-83c7-6424a273bf3f" />
+
+---
+
+## Comprehensive Documentation
+
+Assignment documentation is available at:
+
+[Assignment Documentation](docs/assignment-documentation.md)
 
 ---
 
@@ -217,14 +225,16 @@ Sample Data:
 
 ```sql
 INSERT INTO employees (name, department) VALUES
-('John Doe', 'IT'),
-('Jane Smith', 'HR'),
-('Mike Johnson', 'Finance'),
-('Sarah Wilson', 'Operations'),
-('David Brown', 'Marketing'),
-('Emily Davis', 'Sales'),
-('Chris Taylor', 'Support'),
-('Lisa Anderson', 'Engineering');
+('Sanjay', 'IT'),
+('Minaxi', 'HR'),
+('Sagar', 'Finance'),
+('Simaran', 'Operations'),
+('Mitul', 'Marketing'),
+('Meera', 'Sales'),
+('Monika', 'Support'),
+('Priyanka', 'Engineering'),
+('Nirav', 'Production'),
+('Hetvi', 'Safety');
 ```
 
 ---
@@ -234,7 +244,7 @@ INSERT INTO employees (name, department) VALUES
 ## Clone Repository
 
 ```bash
-git clone https://github.com/<your-github-username>/nagp-k8s-assignment.git
+git clone https://github.com/nandaniya4497/nagp-k8s-assignment.git
 
 cd nagp-k8s-assignment
 ```
@@ -257,7 +267,7 @@ venv\Scripts\activate
 
 ## Install Dependencies
 
-```bash
+```powershell
 pip install -r app/requirements.txt
 ```
 
@@ -271,7 +281,7 @@ psycopg2-binary
 
 ## Run Locally
 
-```bash
+```powershell
 cd app
 
 uvicorn main:app --reload
@@ -315,54 +325,49 @@ This section contains the full sequence from GKE cluster creation to application
 
 ## 1. Set GCP Project
 
-```bash
+```powershell
 gcloud config set project PROJECT_ID
 ```
 
 Verify the active project:
 
-```bash
+```powershell
 gcloud config get-value project
 ```
 
 ## 2. Create GKE Cluster
 
-```bash
-gcloud container clusters create nagp-cluster-2026 \
---num-nodes=3 \
---disk-size=30GB \
---zone=us-central1-a
+```powershell
+gcloud container clusters create nagp-cluster-2026 --num-nodes=3 --disk-size=30GB --zone=us-central1-a
 ```
 
 ## 3. Connect kubectl to Cluster
 
-```bash
-gcloud container clusters get-credentials \
-nagp-cluster-2026 \
---zone us-central1-a
+```powershell
+gcloud container clusters get-credentials nagp-cluster-2026 --zone us-central1-a
 ```
 
 Verify nodes:
 
-```bash
+```powershell
 kubectl get nodes
 ```
 
 ## 4. Install NGINX Ingress Controller
 
-```bash
+```powershell
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 
 Verify controller pods:
 
-```bash
+```powershell
 kubectl get pods -n ingress-nginx
 ```
 
 Verify external load balancer IP:
 
-```bash
+```powershell
 kubectl get svc -n ingress-nginx ingress-nginx-controller
 ```
 
@@ -386,13 +391,13 @@ docker push sanjaynagarro/nagp-api:v1
 
 Create namespace first:
 
-```bash
+```powershell
 kubectl apply -f k8s/namespace.yaml
 ```
 
 Create configuration, secret, database init script, and storage:
 
-```bash
+```powershell
 kubectl apply -f k8s/configmap.yaml
 kubectl apply -f k8s/secret.yaml
 kubectl apply -f k8s/postgres-init-configmap.yaml
@@ -401,21 +406,21 @@ kubectl apply -f k8s/postgres-pvc.yaml
 
 Deploy PostgreSQL and internal database service:
 
-```bash
+```powershell
 kubectl apply -f k8s/postgres-deployment.yaml
 kubectl apply -f k8s/postgres-service.yaml
 ```
 
 Deploy API tier and internal API service:
 
-```bash
+```powershell
 kubectl apply -f k8s/api-deployment.yaml
 kubectl apply -f k8s/api-service.yaml
 ```
 
 Deploy Ingress and HPA:
 
-```bash
+```powershell
 kubectl apply -f k8s/ingress.yaml
 kubectl apply -f k8s/hpa.yaml
 ```
@@ -424,13 +429,13 @@ kubectl apply -f k8s/hpa.yaml
 
 Verify all namespace objects:
 
-```bash
+```powershell
 kubectl get all -n nagp-assignment
 ```
 
 Verify API pods:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=api
 ```
 
@@ -442,7 +447,7 @@ Expected:
 
 Verify PostgreSQL pod:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=postgres
 ```
 
@@ -454,7 +459,7 @@ Expected:
 
 Verify services:
 
-```bash
+```powershell
 kubectl get svc -n nagp-assignment
 ```
 
@@ -467,7 +472,7 @@ postgres-service   ClusterIP
 
 Verify PVC:
 
-```bash
+```powershell
 kubectl get pvc -n nagp-assignment
 ```
 
@@ -479,13 +484,13 @@ postgres-pvc   Bound
 
 Verify Ingress:
 
-```bash
+```powershell
 kubectl get ingress -n nagp-assignment
 ```
 
 Verify HPA:
 
-```bash
+```powershell
 kubectl get hpa -n nagp-assignment
 ```
 
@@ -495,7 +500,7 @@ The table and sample records are initialized automatically from `k8s/postgres-in
 
 Connect to PostgreSQL:
 
-```bash
+```powershell
 kubectl exec -it -n nagp-assignment deployment/postgres -- psql -U postgres -d nagpdb
 ```
 
@@ -515,7 +520,7 @@ Exit PostgreSQL:
 
 Get the Ingress IP:
 
-```bash
+```powershell
 kubectl get ingress -n nagp-assignment
 ```
 
@@ -525,7 +530,7 @@ Use the `ADDRESS` value as `<INGRESS-IP>`.
 
 Test home endpoint:
 
-```bash
+```powershell
 curl http://<INGRESS-IP>/
 ```
 
@@ -539,7 +544,7 @@ Expected:
 
 Test employee endpoint:
 
-```bash
+```powershell
 curl http://<INGRESS-IP>/employees
 ```
 
@@ -549,7 +554,7 @@ Expected:
 [
   {
     "id": 1,
-    "name": "John",
+    "name": "Sanjay",
     "department": "IT"
   }
 ]
@@ -561,19 +566,19 @@ The actual response contains all seeded employee records from PostgreSQL.
 
 List API pods:
 
-```bash
-kubectl get pods -n nagp-assignment -l app=api
+```powershell
+kubectl get podspowershell -n nagp-assignment -l app=api
 ```
 
 Delete one API pod:
 
-```bash
+```
 kubectl delete pod -n nagp-assignment <api-pod-name>
 ```
 
 Watch pod recreation:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=api -w
 ```
 
@@ -583,31 +588,31 @@ Expected result: Kubernetes recreates the deleted API pod and restores 4 API rep
 
 Check data before deleting the PostgreSQL pod:
 
-```bash
+```powershell
 curl http://<INGRESS-IP>/employees
 ```
 
 List PostgreSQL pod:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=postgres
 ```
 
 Delete PostgreSQL pod:
 
-```bash
+```powershell
 kubectl delete pod -n nagp-assignment <postgres-pod-name>
 ```
 
 Watch pod recreation:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=postgres -w
 ```
 
 After the pod is running again, verify data still exists:
 
-```bash
+```powershell
 curl http://<INGRESS-IP>/employees
 ```
 
@@ -629,19 +634,19 @@ docker push sanjaynagarro/nagp-api:v2
 
 Update the deployment image:
 
-```bash
+```powershell
 kubectl set image -n nagp-assignment deployment/api api=sanjaynagarro/nagp-api:v2
 ```
 
 Watch rollout:
 
-```bash
+```powershell
 kubectl rollout status -n nagp-assignment deployment/api
 ```
 
 Verify updated pods:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=api
 ```
 
@@ -651,32 +656,32 @@ Expected result: API pods are updated gradually using the rolling update strateg
 
 Verify HPA configuration:
 
-```bash
+```powershell
 kubectl get hpa -n nagp-assignment
 ```
 
 Verify observed CPU and memory usage:
 
-```bash
+```powershell
 kubectl top pods -n nagp-assignment
 kubectl top deployment api -n nagp-assignment
 ```
 
 Generate load:
 
-```bash
+```powershell
 kubectl run load-generator -n nagp-assignment --image=busybox:1.36 --restart=Never -- /bin/sh -c "while true; do wget -q -O- http://api-service/employees; done"
 ```
 
 Watch HPA:
 
-```bash
+```powershell
 kubectl get hpa -n nagp-assignment -w
 ```
 
 Watch API pods:
 
-```bash
+```powershell
 kubectl get pods -n nagp-assignment -l app=api -w
 ```
 
@@ -684,7 +689,7 @@ Expected result: API replicas can scale from 4 up to 10 when CPU utilization cro
 
 Delete load generator after demonstration:
 
-```bash
+```powershell
 kubectl delete pod -n nagp-assignment load-generator
 ```
 
@@ -716,7 +721,7 @@ Metrics are observed using Kubernetes Metrics Server through `kubectl top`. On G
 
 Commands used:
 
-```bash
+```powershell
 kubectl top pods -n nagp-assignment
 kubectl top deployment api -n nagp-assignment
 kubectl get hpa -n nagp-assignment
@@ -748,7 +753,7 @@ Automatically remove unused nodes.
 
 Monitor:
 
-```bash
+```powershell
 kubectl top pods
 ```
 
@@ -830,7 +835,7 @@ http://<INGRESS-IP>/employees
 
 Replace `<INGRESS-IP>` with the address shown by:
 
-```bash
+```powershell
 kubectl get ingress -n nagp-assignment
 ```
 
@@ -853,14 +858,6 @@ The recording demonstrates:
 * HPA configuration for the Service/API tier.
 * FinOps considerations including requests, limits, HPA, right-sizing, and cleanup.
 
-## Comprehensive Documentation
-
-Detailed assignment documentation is available at:
-
-```text
-docs/assignment-documentation.md
-```
-
 It includes:
 
 * Requirement Understanding
@@ -874,7 +871,7 @@ Before submitting, replace these placeholders with actual values:
 
 | Placeholder | Replace With |
 | ----------- | ------------ |
-| `https://github.com/<your-github-username>/nagp-k8s-assignment` | Final GitHub or GitLab repository URL |
+| `https://github.com/nandaniya4497/nagp-k8s-assignment` | Final GitHub or GitLab repository URL |
 | `http://<INGRESS-IP>/employees` | Final API URL from Kubernetes Ingress |
 | `<Video URL>` | Screen recording link |
 
@@ -884,22 +881,20 @@ Before submitting, replace these placeholders with actual values:
 
 Delete Application:
 
-```bash
+```powershell
 kubectl delete -f k8s/
 ```
 
 Delete NGINX Ingress Controller:
 
-```bash
+```powershell
 kubectl delete -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 ```
 
 Delete Cluster:
 
-```bash
-gcloud container clusters delete \
-nagp-cluster-2026 \
---zone us-central1-a
+```powershell
+gcloud container clusters delete nagp-cluster-2026 --zone us-central1-a
 ```
 
 This prevents unnecessary GCP charges.

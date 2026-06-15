@@ -6,10 +6,12 @@ CREATE TABLE employees (
 
 INSERT INTO employees(name, department)
 VALUES
-('John','IT'),
-('Smith','HR'),
-('David','Finance'),
-('Lisa','Operations'),
-('Peter','Marketing'),
-('Tony','IT'),
-('James','Support');
+('Sanjay','IT'),
+('Minaxi','HR'),
+('Sagar','Finance'),
+('Simaran','Operations'),
+('Mitul','Marketing'),
+('Meera','IT'),
+('Monika','Support'),
+('Nirav','Safety'),
+('Hetvi','Production');
