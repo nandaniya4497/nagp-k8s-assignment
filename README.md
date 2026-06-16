@@ -166,6 +166,7 @@ nagp-k8s-assignment/
 │   ├── postgres-pvc.yaml
 │   ├── postgres-deployment.yaml
 │   ├── postgres-service.yaml
+│   ├── postgres-init-configmap
 │   ├── api-deployment.yaml
 │   ├── api-service.yaml
 │   ├── ingress.yaml
