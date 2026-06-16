@@ -377,21 +377,7 @@ kubectl get svc -n ingress-nginx ingress-nginx-controller
 
 Wait until the `EXTERNAL-IP` value is assigned.
 
-## 5. Build and Push Docker Image
-
-Build the API image:
-
-```bash
-docker build -t sanjaynagarro/nagp-api:v1 -f docker/Dockerfile .
-```
-
-Push the image:
-
-```bash
-docker push sanjaynagarro/nagp-api:v1
-```
-
-## 6. Deploy Kubernetes Objects
+## 5. Deploy Kubernetes Objects
 
 Create namespace first:
 
@@ -400,12 +386,6 @@ kubectl apply -f k8s/namespace.yaml
 ```
 
 Create configuration, secret, database init script, and storage:
-
-Using one command to deploy all k8s files with one go:
-
-```powershell
-kubectl apply -f k8s/
-```
 
 For One by One file deployment
 
@@ -437,7 +417,7 @@ kubectl apply -f k8s/ingress.yaml
 kubectl apply -f k8s/hpa.yaml
 ```
 
-## 7. Verify Kubernetes Objects
+## 6. Verify Kubernetes Objects
 
 Verify all namespace objects:
 
@@ -506,7 +486,7 @@ Verify HPA:
 kubectl get hpa -n nagp-assignment
 ```
 
-## 8. Verify Database Initialization
+## 7. Verify Database Initialization
 
 The table and sample records are initialized automatically from `k8s/postgres-init-configmap.yaml` when PostgreSQL starts with an empty persistent volume.
 
@@ -528,7 +508,7 @@ Exit PostgreSQL:
 \q
 ```
 
-## 9. Get Application URL
+## 8. Get Application URL
 
 Get the Ingress IP:
 
@@ -538,7 +518,7 @@ kubectl get ingress -n nagp-assignment
 
 Use the `ADDRESS` value as `<INGRESS-IP>`.
 
-## 10. Test Application
+## 9. Test Application
 
 Test home endpoint:
 
@@ -574,7 +554,7 @@ Expected:
 
 The actual response contains all seeded employee records from PostgreSQL.
 
-## 11. Demonstrate API Self-Healing
+## 10. Demonstrate API Self-Healing
 
 List API pods:
 
@@ -596,7 +576,7 @@ kubectl get pods -n nagp-assignment -l app=api -w
 
 Expected result: Kubernetes recreates the deleted API pod and restores 4 API replicas.
 
-## 12. Demonstrate Database Self-Healing and Persistence
+## 11. Demonstrate Database Self-Healing and Persistence
 
 Check data before deleting the PostgreSQL pod:
 
@@ -630,7 +610,7 @@ curl http://<INGRESS-IP>/employees
 
 Expected result: employee records are still available because PostgreSQL uses `postgres-pvc`.
 
-## 13. Demonstrate Rolling Update
+## 12. Demonstrate Rolling Update
 
 Build a new image version:
 
@@ -664,7 +644,7 @@ kubectl get pods -n nagp-assignment -l app=api
 
 Expected result: API pods are updated gradually using the rolling update strategy.
 
-## 14. Demonstrate HPA
+## 13. Demonstrate HPA
 
 Verify HPA configuration:
 
