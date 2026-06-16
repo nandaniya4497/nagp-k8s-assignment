@@ -156,6 +156,7 @@ nagp-k8s-assignment/
 ├── app
 │   ├── main.py
 │   ├── database.py
+│   ├── init.sql
 │   └── requirements.txt
 │
 ├── k8s
