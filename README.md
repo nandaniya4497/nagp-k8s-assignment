@@ -170,10 +170,12 @@ nagp-k8s-assignment/
 │   ├── api-service.yaml
 │   ├── ingress.yaml
 │   └── hpa.yaml
-│
-├── Dockerfile
+├── Docker
+│   └── Dockerfile
 ├── README.md
-└── docs
+├── docs
+│   ├── architecture-diagram.jpg
+│   └── assignment-documentation.md
 ```
 
 ---
