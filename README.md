@@ -656,7 +656,6 @@ Verify observed CPU and memory usage:
 
 ```powershell
 kubectl top pods -n nagp-assignment
-kubectl top deployment api -n nagp-assignment
 ```
 
 Generate load:
@@ -715,7 +714,6 @@ Commands used:
 
 ```powershell
 kubectl top pods -n nagp-assignment
-kubectl top deployment api -n nagp-assignment
 kubectl get hpa -n nagp-assignment
 ```
 
@@ -792,7 +790,7 @@ Delete infrastructure after testing.
 Repository URL:
 
 ```text
-https://github.com/<your-github-username>/nagp-k8s-assignment
+https://github.com/nandaniya4497/nagp-k8s-assignment
 ```
 
 Repository contents:
