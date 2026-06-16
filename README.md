@@ -166,7 +166,7 @@ nagp-k8s-assignment/
 │   ├── postgres-pvc.yaml
 │   ├── postgres-deployment.yaml
 │   ├── postgres-service.yaml
-│   ├── postgres-init-configmap
+│   ├── postgres-init-configmap.yaml
 │   ├── api-deployment.yaml
 │   ├── api-service.yaml
 │   ├── ingress.yaml
@@ -400,6 +400,14 @@ kubectl apply -f k8s/namespace.yaml
 ```
 
 Create configuration, secret, database init script, and storage:
+
+Using one command to deploy all k8s files with one go:
+
+```powershell
+kubectl apply -f k8s/
+```
+
+For One by One file deployment
 
 ```powershell
 kubectl apply -f k8s/configmap.yaml
