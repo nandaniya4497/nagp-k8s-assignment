@@ -20,10 +20,14 @@
 
 # Repository Information
 
-## GitHub Repository
+## GitHub Repository & Screen Recording
 
 ```text
 https://github.com/nandaniya4497/nagp-k8s-assignment.git
+```
+
+```text
+https://nagarro-my.sharepoint.com/:v:/p/sanjay_nandaniya/IQCMbMb_DXA5Qblb1xRRvbvTAcXKhWBDnu-AR_T3f9FWM2Q?e=rC5bUk
 ```
 
 ## Docker Hub Repository
@@ -834,7 +838,7 @@ kubectl get ingress -n nagp-assignment
 Screen recording URL:
 
 ```text
-<Video URL>
+https://nagarro-my.sharepoint.com/:v:/p/sanjay_nandaniya/IQCMbMb_DXA5Qblb1xRRvbvTAcXKhWBDnu-AR_T3f9FWM2Q?e=rC5bUk
 ```
 
 The recording demonstrates:
@@ -863,7 +867,7 @@ Before submitting, replace these placeholders with actual values:
 | ----------- | ------------ |
 | `https://github.com/nandaniya4497/nagp-k8s-assignment` | Final GitHub or GitLab repository URL |
 | `http://<INGRESS-IP>/employees` | Final API URL from Kubernetes Ingress |
-| `<Video URL>` | Screen recording link |
+| `https://nagarro-my.sharepoint.com/:v:/p/sanjay_nandaniya/IQCMbMb_DXA5Qblb1xRRvbvTAcXKhWBDnu-AR_T3f9FWM2Q?e=rC5bUk` | Screen recording link |
 
 ---
 
