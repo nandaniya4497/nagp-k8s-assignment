@@ -108,7 +108,6 @@ Observed metrics can be collected using:
 
 ```bash
 kubectl top pods -n nagp-assignment
-kubectl top deployment api -n nagp-assignment
 kubectl get hpa -n nagp-assignment
 ```
 
